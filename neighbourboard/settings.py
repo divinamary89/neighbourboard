@@ -74,7 +74,6 @@ WSGI_APPLICATION = 'neighbourboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-import mongoengine
 
 import dj_database_url
 import os
@@ -86,11 +85,6 @@ DATABASES = {
     )
 }
 
-mongoengine.connect(
-    db='neighbourboard_db',
-    host='localhost',
-    port=27017
-)
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
