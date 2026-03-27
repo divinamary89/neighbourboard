@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 style="margin-bottom: 20px;">Latest Posts</h2>
+
+<!-- Category filter buttons -->
+<div style="margin-bottom: 20px;">
+    <a href="/" class="btn" style="{% if not selected %}background:#1a5dc8{% endif %}">All</a>
+    <a href="/?category=events" class="btn" style="{% if selected == 'events' %}background:#1a5dc8{% endif %}">Events</a>
+    <a href="/?category=lostfound" class="btn" style="{% if selected == 'lostfound' %}background:#1a5dc8{% endif %}">Lost & Found</a>
+    <a href="/?category=notices" class="btn" style="{% if selected == 'notices' %}background:#1a5dc8{% endif %}">Notices</a>
+    <a href="/?category=recommendations" class="btn" style="{% if selected == 'recommendations' %}background:#1a5dc8{% endif %}">Recommendations</a>
+</div>
+
+{% if posts %}
+    {% for post in posts %}
+        <div class="post-card">
+            <span class="badge badge-{{ post.category }}">{{ post.get_category_display }}</span>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+            <p><strong>Contact:</strong> {{ post.contact }}</p>
+            <p class="meta">Posted by {{ post.author.username }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="empty">No posts in this category yet! 😊</p>
+{% endif %}
+
+{% endblock %}

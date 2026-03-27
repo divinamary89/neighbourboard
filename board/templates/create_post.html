@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-card">
+    <h2>Create a New Post 📝</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Post Title" required>
+        
+        <select name="category">
+            <option value="events">Events</option>
+            <option value="lostfound">Lost & Found</option>
+            <option value="notices">Notices</option>
+            <option value="recommendations">Recommendations</option>
+        </select>
+
+        <textarea name="content" placeholder="Write your post here..." rows="5" required></textarea>
+
+        <input type="text" name="contact" placeholder="Your email or phone number" required>
+
+        <button type="submit" class="btn">Post It! 🚀</button>
+    </form>
+
+    <br>
+    <a href="/">← Back to Home</a>
+</div>
+
+{% endblock %}
