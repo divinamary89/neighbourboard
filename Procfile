@@ -1,1 +1,1 @@
-web: gunicorn neighbourboard.wsgi
+web: python manage.py migrate && gunicorn neighbourboard.wsgi
