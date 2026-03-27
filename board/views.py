@@ -61,3 +61,10 @@ def create_post_view(request):
 def profile_view(request):
     posts = Post.objects.filter(author=request.user).order_by('-created_at')
     return render(request, 'profile.html', {'posts': posts})
+
+@login_required(login_url='login')
+def delete_post_view(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if post.author == request.user:
+        post.delete()
+    return redirect('home')
